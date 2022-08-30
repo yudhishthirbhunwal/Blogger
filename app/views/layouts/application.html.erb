@@ -7,13 +7,18 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag :application %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <!-- Notice and Alert flash messages. -->
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+    <div class="content">
+      <!-- Notice and Alert flash messages. -->
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
