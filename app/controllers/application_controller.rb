@@ -1,6 +1,3 @@
 class ApplicationController < ActionController::Base
-  # Defining root action.
-  def index
-    render html: "I am going to be the best blogging app everr!!!!!"
-  end
+  before_action :authenticate_user!, except: [:home, :about, :contact, :help]
 end
