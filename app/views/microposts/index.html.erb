@@ -4,16 +4,16 @@
 
 <div id="microposts" class="grid grid-cols-3 m-3">
   <% @microposts.each do |micropost| %>
-    <div class="border-2 p-3 m-3 shadow-lg hover:border-black bg-emerald-50">
+    <div class="border-2 p-3 m-3 shadow-lg hover:border-black bg-emerald-50 rounded-lg">
       <%= render micropost %>
       <br>
       <hr>
       <br>
       <p>
-        <%= link_to "Show this micropost", micropost %>
+        <%= link_to "Show this micropost", micropost, class: "cursor-pointer underline hover:decoration-wavy" %>
       </p>
     </div>
   <% end %>
 </div>
 
-<%= link_to "New micropost", new_micropost_path, class: "bg-red-400 p-3" %>
+<%= link_to "New micropost", new_micropost_path, class: "bg-red-400 p-3 hover:bg-red-300 rounded-lg" %>

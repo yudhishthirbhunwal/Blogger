@@ -1,8 +1,8 @@
-<h1 class="text-3xl">All Users</h1>
+<h1 class="text-5xl py-4 bg-emerald-200 text-teal-900 text-center font-mono font-extrabold underline hover:decoration-wavy">All Users</h1>
 
-<ul class="users">
+<ul class="users flex flex-col">
   <% @users.each do |user| %>
-    <li><%= user.email %></li>
+    <li class="bg-yellow-300 hover:bg-yellow-400 py-2"><%= user.email %></li>
   <% end %>
 </ul>
 
