@@ -1,14 +1,19 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Microposts</h1>
+<h1 class="text-5xl bg-emerald-200 text-teal-900 text-center font-mono font-extrabold underline hover:decoration-wavy">Microposts</h1>
 
-<div id="microposts">
+<div id="microposts" class="grid grid-cols-3 m-3">
   <% @microposts.each do |micropost| %>
-    <%= render micropost %>
-    <p>
-      <%= link_to "Show this micropost", micropost %>
-    </p>
+    <div class="border-2 p-3 m-3 shadow-lg hover:border-black bg-emerald-50">
+      <%= render micropost %>
+      <br>
+      <hr>
+      <br>
+      <p>
+        <%= link_to "Show this micropost", micropost %>
+      </p>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New micropost", new_micropost_path %>
+<%= link_to "New micropost", new_micropost_path, class: "bg-red-400 p-3" %>
