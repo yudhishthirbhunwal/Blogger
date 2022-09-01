@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :microposts
   has_many :comments
+  has_many :likes
 end

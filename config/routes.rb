@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :microposts do
     resources :comments, except: [:index, :new, :show]
   end
+  resources :likes, only: [:create, :destroy]
 end

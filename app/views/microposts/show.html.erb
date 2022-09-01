@@ -1,8 +1,13 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @micropost %>
-
-<%= render @micropost.comments.order(id: desc) %>
+<br>
+<%= @micropost.likes.count %> likes
+<% like = current_user.likes.find_by(micropost: @micropost) %>
+<% if like.nil? %>
+  <%= button_to "Like", likes_path, params: { like: { micropost_id: @micropost.id } } %>
+<% else %>
+  <%= button_to "Unike", like_path(like), method: :delete %>
+<% end %>
+<%= render @micropost.comments.order(id: :desc) %>
 <%= render partial: 'comments/form', locals: { micropost: @micropost } %>
 
 <div>
