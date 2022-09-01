@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/about', to: 'pages#about'
   get '/contact', to: 'pages#contact'
   get '/help', to: 'pages#help'
-  resources :microposts
   resources :users, only: [:index, :show]
+  resources :microposts do
+    resources :comments, except: [:index, :new, :show]
+  end
 end

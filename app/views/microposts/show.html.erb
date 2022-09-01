@@ -2,6 +2,9 @@
 
 <%= render @micropost %>
 
+<%= render @micropost.comments.order(id: desc) %>
+<%= render partial: 'comments/form', locals: { micropost: @micropost } %>
+
 <div>
   <%= link_to "Edit this micropost", edit_micropost_path(@micropost) %> |
   <%= link_to "Back to microposts", microposts_path %>
