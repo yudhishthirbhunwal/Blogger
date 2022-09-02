@@ -84,3 +84,5 @@ group :test do
 end
 
 gem "pundit", "~> 2.2"
+
+gem "byebug", "~> 11.1"

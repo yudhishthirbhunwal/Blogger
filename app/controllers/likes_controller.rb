@@ -4,19 +4,18 @@ class LikesController < ApplicationController
     if !@like.save
       flash[:notice] = @like.errors.full_messages.to_sentence
     end
-    # redirect_to micropost_path(:micropost_id)
-    redirect_to @like.micropost
+    redirect_back(fallback_location: microposts_path)
   end
 
   def destroy
     @like = current_user.likes.find(params[:id])
-    micropost = @like.micropost
+    likeable = @like.likeable
     @like.destroy
-    redirect_to micropost
+    redirect_back(fallback_location: microposts_path)
   end
 
   private
     def like_params
-      params.require(:like).permit(:micropost_id)
+      params.require(:like).permit(:likeable_id, :likeable_type)
     end
 end

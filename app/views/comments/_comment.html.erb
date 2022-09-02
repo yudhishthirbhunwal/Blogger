@@ -3,5 +3,6 @@
     <%= comment.content %>
   </p>
   <small>By: <%= comment.user.email %></small>
+  <%= render partial: 'likes/button', locals: { likeable: comment } %>
   <hr>
 </div>

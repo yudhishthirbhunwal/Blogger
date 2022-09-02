@@ -1,0 +1,7 @@
+<%= likeable.likes.count %> likes
+<% like = current_user.likes.find_by(likeable: likeable) %>
+<% if like.nil? %>
+  <%= button_to "Like", likes_path, params: { like: { likeable_id: likeable.id, likeable_type: likeable.class.to_s } }, class: "cursor-pointer bg-indigo-400 inline-block p-2 m-1 rounded-md hover:bg-indigo-500" %>
+<% else %>
+  <%= button_to "Unike", like_path(like), method: :delete, class: "cursor-pointer bg-indigo-400 inline-block p-2 m-1 rounded-md hover:bg-indigo-500" %>
+<% end %>
