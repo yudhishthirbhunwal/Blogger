@@ -1,2 +1,6 @@
-<h1><%= @user.email %></h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<% provide(:title, "Profile #{@user.id}") %>
+<h1 class="text-5xl bg-emerald-200 text-teal-900 text-center font-mono font-extrabold underline hover:decoration-wavy"><%= @user.email %></h1>
+<% if policy(@user).edit? %>
+  <p>Edit your profile here:</p>
+  <%= link_to "Edit my profile", edit_user_registration_path, class: "cursor-pointer bg-indigo-400 inline-block p-2 m-1 rounded-md hover:bg-indigo-500" %>
+<% end %>

@@ -2,9 +2,13 @@
   <div class="logo hover:bg-teal-300 hover:text-black rounded p-2 m-2">LOGO</div>
   <nav>
     <ul class="flex flex-row">
-      <li class="hover:bg-teal-300 hover:text-black rounded p-2 m-2"><%= link_to "Home", root_path %></li>
+    <% if user_signed_in? && current_user.is_admin? %>
+      <small>(Admin User)</small>
+    <% end %>
+    <li class="hover:bg-teal-300 hover:text-black rounded p-2 m-2"><%= link_to "Home", root_path %></li>
       <% if user_signed_in? %>
         <li class="hover:bg-teal-300 hover:text-black rounded p-2 m-2"><%= link_to "Users", users_path %></li>
+        <li class="hover:bg-teal-300 hover:text-black rounded p-2 m-2"><%= link_to "Profile", user_path(current_user) %></li>
         <li class="hover:bg-teal-300 hover:text-black rounded p-2 m-2"><%= link_to "All Posts", microposts_path %></li>
         <li class="hover:bg-teal-300 hover:text-black rounded p-2 m-2"><%= button_to "Log out", destroy_user_session_path, method: :delete %></li>
       <% else %>

@@ -1,17 +1,12 @@
-class MicropostPolicy < ApplicationPolicy
+class UserPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
       scope.all
     end
   end
-  def new?
-    owner?
-  end
+
   def edit?
-    owner?
-  end
-  def create?
     owner?
   end
   def update?
@@ -23,6 +18,6 @@ class MicropostPolicy < ApplicationPolicy
 
   private
     def owner?
-      (@user == @record.user) || (@user.is_admin?)
+      (@user == @record) || (@user.is_admin?)
     end
 end

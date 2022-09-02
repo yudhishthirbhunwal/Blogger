@@ -3,15 +3,16 @@
 <%= @micropost.likes.count %> likes
 <% like = current_user.likes.find_by(micropost: @micropost) %>
 <% if like.nil? %>
-  <%= button_to "Like", likes_path, params: { like: { micropost_id: @micropost.id } } %>
+  <%= button_to "Like", likes_path, params: { like: { micropost_id: @micropost.id } }, class: "cursor-pointer bg-indigo-400 inline-block p-2 m-1 rounded-md hover:bg-indigo-500" %>
 <% else %>
-  <%= button_to "Unike", like_path(like), method: :delete %>
+  <%= button_to "Unike", like_path(like), method: :delete, class: "cursor-pointer bg-indigo-400 inline-block p-2 m-1 rounded-md hover:bg-indigo-500" %>
 <% end %>
+<strong>Comments:</strong>
 <%= render @micropost.comments.order(id: :desc) %>
 <%= render partial: 'comments/form', locals: { micropost: @micropost } %>
 
 <div>
-    <%= link_to "Edit this micropost", edit_micropost_path(@micropost) if policy(@micropost).edit? %> |
-    <%= button_to "Destroy this micropost", @micropost, method: :delete  if policy(@micropost).destroy? %>
-  <%= link_to "Back to microposts", microposts_path %>
+    <%= link_to "Edit this micropost", edit_micropost_path(@micropost), class: "cursor-pointer bg-indigo-400 inline-block p-2 m-1 rounded-md hover:bg-indigo-500" if policy(@micropost).edit? %> |
+    <%= button_to "Destroy this micropost", @micropost, method: :delete, class: "cursor-pointer bg-indigo-400 inline-block p-2 m-1 rounded-md hover:bg-indigo-500" if policy(@micropost).destroy? %>
+  <%= link_to "Back to microposts", microposts_path, class: "cursor-pointer bg-indigo-400 inline-block p-2 m-1 rounded-md hover:bg-indigo-500" %>
   </div>

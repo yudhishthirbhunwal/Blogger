@@ -2,7 +2,7 @@
 
 <ul class="users flex flex-col">
   <% @users.each do |user| %>
-    <li class="bg-yellow-300 hover:bg-yellow-400 py-2"><%= user.email %></li>
+    <li class="bg-yellow-300 hover:bg-yellow-400 py-2"><%= link_to user.email, user %></li>
   <% end %>
 </ul>
 
