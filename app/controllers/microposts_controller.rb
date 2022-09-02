@@ -12,16 +12,19 @@ class MicropostsController < ApplicationController
 
   # GET /microposts/new
   def new
-    @micropost = Micropost.new
+    @micropost = current_user.microposts.new
+    authorize @micropost
   end
 
   # GET /microposts/1/edit
   def edit
+    authorize @micropost
   end
 
   # POST /microposts or /microposts.json
   def create
     @micropost = current_user.microposts.build(micropost_params)
+    authorize @micropost
 
     respond_to do |format|
       if @micropost.save
@@ -36,6 +39,7 @@ class MicropostsController < ApplicationController
 
   # PATCH/PUT /microposts/1 or /microposts/1.json
   def update
+    authorize @micropost
     respond_to do |format|
       if @micropost.update(micropost_params)
         format.html { redirect_to micropost_url(@micropost), notice: "Micropost was successfully updated." }
@@ -49,6 +53,7 @@ class MicropostsController < ApplicationController
 
   # DELETE /microposts/1 or /microposts/1.json
   def destroy
+    authorize @micropost
     @micropost.destroy
 
     respond_to do |format|
