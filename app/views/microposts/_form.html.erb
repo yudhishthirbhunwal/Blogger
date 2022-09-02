@@ -17,6 +17,11 @@
   </div>
 
   <div>
+    <%= form.label :rich_content, style: "display: block" %>
+    <%= form.rich_text_area :rich_content, class: "block" %>
+  </div>
+
+  <div>
     <%= form.submit "Create Micropost", class: "cursor-pointer bg-indigo-400 inline-block p-2 m-1 rounded-md hover:bg-indigo-500" %>
   </div>
 <% end %>
