@@ -51,6 +51,9 @@ gem "bootsnap", require: false
 # Devise for authenticaion
 gem "devise"
 
+# Rolify for roles
+gem "rolify", "~> 6.0"
+
 # JS bundler
 gem "jsbundling-rails"
 
