@@ -3,6 +3,8 @@
     <%= comment.content %>
   </p>
   <small>By: <%= comment.user.email %></small>
+  <%= link_to "Edit", edit_micropost_comment_path(comment.micropost, comment) if policy(comment).edit? %>
+  <%= button_to "Delete", micropost_comment_path(comment.micropost, comment), method: :delete if policy(comment).destroy? %>
   <%= render partial: 'likes/button', locals: { likeable: comment } %>
   <hr>
 </div>

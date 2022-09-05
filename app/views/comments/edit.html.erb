@@ -1,0 +1,18 @@
+<h1>Editing comment</h1>
+
+<%= form_with url: micropost_comment_path(@comment.micropost, @comment), method: :patch do |form| %>
+  <div>
+    <%#= text_field(:comment,:content) %>
+    <input type="text" id="comment_content" name="comment[content]" />
+  </div>
+
+  <div>
+    <%= form.submit "Update Comment", class: "cursor-pointer bg-indigo-400 inline-block p-2 m-1 rounded-md hover:bg-indigo-500" %>
+  </div>
+<% end %>
+
+<br>
+
+<div>
+  <%= link_to "Back to microposts", microposts_path %>
+</div>
