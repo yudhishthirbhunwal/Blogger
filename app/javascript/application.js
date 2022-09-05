@@ -3,3 +3,10 @@ import "@hotwired/turbo-rails"
 import "./controllers/hello_controller.js"
 import "@rails/actiontext"
 import "trix"
+
+document.querySelectorAll(".subcomment-form-display").forEach((el) => {
+  el.addEventListener('click', (ev) => {
+    ev.preventDefault();
+    el.nextElementSibling.style = 'display: block;';
+  });
+});

@@ -1,4 +1,4 @@
-<div id="" class="bg-teal-400 border">
+<div class="bg-teal-400 border">
   <p>
     <%= comment.content %>
   </p>
@@ -7,4 +7,11 @@
   <%= button_to "Delete", micropost_comment_path(comment.micropost, comment), method: :delete if policy(comment).destroy? %>
   <%= render partial: 'likes/button', locals: { likeable: comment } %>
   <hr>
+  <a href="#" class="subcomment-form-display">reply</a>
+  <div class="subcomment-form hidden">
+    <%= render partial: 'comments/form', locals: { micropost: comment.micropost, parent: comment } %>
+  </div>
+  <div class="subcomment" style="padding-left: 30px">
+    <%= render comment.comments.order(id: :desc) %>
+  </div>
 </div>

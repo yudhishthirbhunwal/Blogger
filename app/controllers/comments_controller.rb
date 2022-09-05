@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:content).merge(micropost_id: params[:micropost_id])
+    params.require(:comment).permit(:content, :parent_id).merge(micropost_id: params[:micropost_id])
   end
 
   def set_comment

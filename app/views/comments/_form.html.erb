@@ -1,7 +1,11 @@
 <%= form_with url: micropost_comments_path(micropost) do |form| %>
   <div>
-    <%#= text_field(:comment,:content) %>
-    <input type="text" id="comment_content" name="comment[content]" />
+    <!-- input type="text" id="comment_content" name="comment[content]" /-->
+    <%= text_field(:comment, :content) %>
+  </div>
+
+  <div>
+    <%= hidden_field_tag 'comment[parent_id]' , parent.id if !parent.nil? %>
   </div>
 
   <div>

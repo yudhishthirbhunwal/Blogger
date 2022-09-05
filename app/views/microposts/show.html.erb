@@ -3,8 +3,8 @@
 <%= render partial: 'likes/button', locals: { likeable: @micropost } %>
 
 <strong>Comments:</strong>
-<%= render @micropost.comments.order(id: :desc) %>
-<%= render partial: 'comments/form', locals: { micropost: @micropost } %>
+<%= render @micropost.comments.where(parent_id: nil).includes(:user).order(id: :desc) %>
+<%= render partial: 'comments/form', locals: { micropost: @micropost, parent: nil } %>
 
 <div>
     <%= link_to "Edit this micropost", edit_micropost_path(@micropost), class: "cursor-pointer bg-indigo-400 inline-block p-2 m-1 rounded-md hover:bg-indigo-500" if policy(@micropost).edit? %> |
