@@ -86,3 +86,5 @@ end
 gem "pundit", "~> 2.2"
 
 gem "byebug", "~> 11.1"
+
+gem "acts-as-taggable-on", "~> 9.0"

@@ -3,7 +3,12 @@ class MicropostsController < ApplicationController
 
   # GET /microposts or /microposts.json
   def index
-    @microposts = Micropost.all
+    # @microposts = Micropost.all.order(id: :desc)
+    if params[:tag]
+      @microposts = Micropost.tagged_with(params[:tag]).order(id: :desc)
+    else
+      @microposts = Micropost.all.order(id: :desc)
+    end
   end
 
   # GET /microposts/1 or /microposts/1.json
@@ -70,6 +75,6 @@ class MicropostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def micropost_params
-      params.require(:micropost).permit(:content, :user_id, :rich_content)
+      params.require(:micropost).permit(:content, :user_id, :rich_content, :category, :tag_list)
     end
 end

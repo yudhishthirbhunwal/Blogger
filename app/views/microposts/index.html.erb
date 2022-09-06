@@ -1,15 +1,74 @@
 <p style="color: green"><%= notice %></p>
 
 <h1 class="text-5xl bg-emerald-200 text-teal-900 text-center font-mono font-extrabold underline hover:decoration-wavy">Microposts</h1>
-
-<div id="microposts" class="grid grid-cols-3 m-3">
-  <% @microposts.each do |micropost| %>
-    <%= link_to micropost, class: "cursor-pointer underline hover:decoration-wavy" do %>
-      <div class="border-2 p-3 m-3 shadow-lg hover:border-black bg-emerald-50 rounded-lg">
-        <%= render micropost %>
-      </div>
-    <% end %>
-  <% end %>
-</div>
-
 <%= link_to "New micropost", new_micropost_path, class: "bg-red-400 p-3 hover:bg-red-300 rounded-lg" %>
+
+<div>
+<h2 class="text-3xl bg-emerald-200 text-teal-900 text-center font-mono font-extrabold underline hover:decoration-wavy">View by Categories</h2>
+<%= link_to 'View all microposts', microposts_path %> <br>
+<%= link_to 'Personal', microposts_path(category: 'personal') %>
+<%= link_to 'Food', microposts_path(category: 'food') %>
+<%= link_to 'Travel', microposts_path(category: 'travel') %>
+<%= link_to 'Lifestyle', microposts_path(category: 'lifestyle') %>
+<%= link_to 'Technology', microposts_path(category: 'technology') %>
+<%= link_to 'Fashion', microposts_path(category: 'fashion') %>
+<%= link_to 'Entertainment', microposts_path(category: 'entertainment') %>
+</div>
+<% if params[:category]  == nil %>
+<div>
+<strong>All Microposts:</strong>
+<%= render partial: 'microposts/microposts', locals: { microposts: @microposts } %>
+</div>
+<% end %>
+<% if params[:category] == 'personal' %>
+<div>
+<strong>Personal:</strong>
+<%= render partial: 'microposts/microposts', locals: { microposts: @microposts.personal } %>
+</div>
+<% end %>
+<% if params[:category] == 'food' %>
+<div>
+<strong>Food:</strong>
+<%= render partial: 'microposts/microposts', locals: { microposts: @microposts.food } %>
+</div>
+<% end %>
+<% if params[:category] == 'travel' %>
+<div>
+<strong>Travel:</strong>
+<%= render partial: 'microposts/microposts', locals: { microposts: @microposts.travel } %>
+</div>
+<% end %>
+<% if params[:category] == 'lifestyle' %>
+<div>
+<strong>Lifestyle:</strong>
+<%= render partial: 'microposts/microposts', locals: { microposts: @microposts.lifestyle } %>
+</div>
+<% end %>
+<% if params[:category] == 'technology' %>
+<div>
+<strong>Technology:</strong>
+<%= render partial: 'microposts/microposts', locals: { microposts: @microposts.technology } %>
+</div>
+<% end %>
+<% if params[:category] == 'fashion' %>
+<div>
+<strong>Fashion:</strong>
+<%= render partial: 'microposts/microposts', locals: { microposts: @microposts.fashion } %>
+</div>
+<% end %>
+<% if params[:category] == 'entertainment' %>
+<div>
+<strong>Entertainment:</strong>
+<%= render partial: 'microposts/microposts', locals: { microposts: @microposts.entertainment } %>
+</div>
+<% end %>
+
+<div>
+  <h3>All Tags </h3>
+  <div id="tag_cloud">
+    <% tag_cloud Micropost.tag_counts, ['s', 'm', 'l'] do |tag, css_class| %>
+      <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+    <% end %>
+    ...
+  </div>
+</div>

@@ -17,6 +17,22 @@
   </div>
 
   <div>
+    <%= form.label :category, style: "display: block" %>
+    <%= form.radio_button :category, :personal %> Personal </br>
+    <%= form.radio_button :category, :food %> Food </br>
+    <%= form.radio_button :category, :travel %> Travel </br>
+    <%= form.radio_button :category, :lifestyle %> Lifestyle </br>
+    <%= form.radio_button :category, :technology %> Technology </br>
+    <%= form.radio_button :category, :fashion %> Fashion </br>
+    <%= form.radio_button :category, :entertainment %> Entertainment </br>
+  </div>
+
+  <div>
+    <%= form.label :tag_list, 'Tags (separated by commas)',  style: "display: block" %>
+    <%= form.text_area :tag_list %>
+  </div>
+
+  <div>
     <%= form.label :rich_content, style: "display: block" %>
     <%= form.rich_text_area :rich_content, class: "block" %>
   </div>

@@ -11,4 +11,5 @@ Rails.application.routes.draw do
     resources :comments, except: [:index, :new, :show]
   end
   resources :likes, only: [:create, :destroy]
+  get 'tags/:tag', to: 'microposts#index', as: :tag
 end

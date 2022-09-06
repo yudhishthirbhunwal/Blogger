@@ -10,8 +10,17 @@
   </p>
 
   <p>
+    <strong>Category:</strong>
+    <%= micropost.category %>
+  </p>
+
+  <p>
     <strong>Rich Content:</strong>
     <%= micropost.rich_content %>
   </p>
 
+  <p>
+    <strong>Tags:</strong>
+    <%= raw micropost.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+  </p>
 </div>

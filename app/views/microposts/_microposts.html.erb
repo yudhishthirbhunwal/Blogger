@@ -1,0 +1,9 @@
+<div id="microposts" class="grid grid-cols-3 m-3">
+  <% microposts.each do |micropost| %>
+    <%= link_to micropost, class: "cursor-pointer underline hover:decoration-wavy" do %>
+      <div class="border-2 p-3 m-3 shadow-lg hover:border-black bg-emerald-50 rounded-lg">
+        <%= render micropost %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
