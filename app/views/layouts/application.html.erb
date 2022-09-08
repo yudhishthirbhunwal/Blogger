@@ -12,15 +12,15 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body class="flex flex-col min-h-screen">
+  <body>
     <%= render 'layouts/header' %>
-    <div class="content grow bg-emerald-200">
+    <div class="">
       <!-- Notice and Alert flash messages. -->
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
       <%= yield %>
     </div>
-    <%= debug(params) if Rails.env.development?%>
+    <%#= debug(params) if Rails.env.development?%>
     <%= render 'layouts/footer' %>
   </body>
 </html>

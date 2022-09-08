@@ -1,21 +1,53 @@
-<header class="flex flex-row shrink-0 place-content-between bg-teal-900 text-white">
-  <div class="logo hover:bg-teal-300 hover:text-black rounded p-2 m-2">LOGO</div>
-  <nav>
-    <ul class="flex flex-row">
-    <% if user_signed_in? && current_user.is_admin? %>
-      <small>(Admin User)</small>
-    <% end %>
-    <li class="hover:bg-teal-300 hover:text-black rounded p-2 m-2"><%= link_to "Home", root_path %></li>
-      <% if user_signed_in? %>
-        <li class="hover:bg-teal-300 hover:text-black rounded p-2 m-2"><%= link_to "Users", users_path %></li>
-        <li class="hover:bg-teal-300 hover:text-black rounded p-2 m-2"><%= link_to "Profile", user_path(current_user) %></li>
-        <li class="hover:bg-teal-300 hover:text-black rounded p-2 m-2"><%= link_to "All Posts", microposts_path %></li>
-        <li class="hover:bg-teal-300 hover:text-black rounded p-2 m-2"><%= button_to "Log out", destroy_user_session_path, method: :delete %></li>
-      <% else %>
-        <li class="hover:bg-teal-300 hover:text-black rounded p-2 m-2"><%= link_to "Sign Up", new_user_registration_path %></li>
-        <li class="hover:bg-teal-300 hover:text-black rounded p-2 m-2"><%= link_to "Login", new_user_session_path %></li>
+<header class="sticky top-0 z-50 mt-5">
+  <div class="container mx-auto px-5 flex flex-wrap justify-between items-center border-b-2 border-b-white h-14">
+
+    <!-- Brand Logo -->
+    <div class="text-white text-md font-bold">
+      <%= link_to 'WORLD', root_path, class: "block px-4 py-2 transition duration-500 hover:underline hover:decoration-2 hover:underline-offset-4" %>
+    </div>
+
+    <div class="flex items-center text-white">
+      <!-- If User is Admin -->
+      <% if user_signed_in? && current_user.is_admin? %>
+        <small>(Admin User)</small>
       <% end %>
-      <li class="hover:bg-teal-300 hover:text-black rounded p-2 m-2"><%= link_to "Help", help_path %></li>
-    </ul>  
-  </nav>
+      <!-- Burger Nav Button on Mobile -->
+      <div class="md:hidden p-3 mb-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="hidden md:block basis-full md:basis-auto text-gray-400 text-sm font-medium">
+      <ul class="flex flex-col md:flex-row">
+        <li class="hover:text-white">
+          <%= link_to "Home", root_path, class: "md:inline-block block px-4 py-2 transition duration-500" %>
+        </li>
+      <% if user_signed_in? %>
+        <li class="hover:text-white">
+          <%= link_to "Profile", user_path(current_user), class: "md:inline-block block px-4 py-2 transition duration-500" %>
+        </li>
+        <li class="hover:text-white">
+          <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "md:inline-block block px-4 py-2 transition duration-500 w-full text-left" %>
+        </li>
+      <% else %>
+        <li class="hover:text-white">
+          <%= link_to "Sign Up", new_user_registration_path, class: "md:inline-block block px-4 py-2 transition duration-500" %>
+        </li>
+        <li class="hover:text-white">
+          <%= link_to "Login", new_user_session_path, class: "md:inline-block block px-4 py-2 transition duration-500" %>
+        </li>
+      <% end %>
+        <li class="hover:text-white">
+          <%= link_to "Help", help_path, class: "md:inline-block block px-4 py-2 transition duration-500" %>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
 </header>
